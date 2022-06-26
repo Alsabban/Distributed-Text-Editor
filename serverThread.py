@@ -125,10 +125,34 @@ def textApp(input_queue, output_queue):
 
     window.mainloop()
 
+
+def connect():
+    context = zmq.Context()
+    p3 = "tcp://"+ HOST +":"+ PORT3 # how and where to connect
+    s  = context.socket(zmq.REP)    # create reply socket
+
+    s.bind(p3)                      # bind socket to address
+    
+    while True:
+        global counter
+        message = s.recv_string()   # wait for incoming message
+        if message == "MSG":        
+            file = open ("test.txt", "r")
+            text = file.read()      #reading the file
+            s.send_string(text)     #send the text file client
+            counter +=1             #increase the number of clients 
+            print(f"[ACTIVE CONNECTIONS] {counter}") #display the number of connected clients in the server 
+
+        else:
+            pass
+
+
 textThread = threading.Thread(target=textApp, args=(localRecvQueue, localPubQueue,))
 nRecvThread = threading.Thread(target=recvApp, args=(localRecvQueue,))
 nSendThread = threading.Thread(target=sendApp, args=(localPubQueue,))
+connThread = threading.Thread(target=connect, )
 
 nRecvThread.start()
 nSendThread.start()
 textThread.start()
+connThread.start()

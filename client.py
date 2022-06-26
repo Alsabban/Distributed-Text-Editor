@@ -78,7 +78,6 @@ def textApp(input_queue, output_queue):
         txt_edit.insert(tk.END, text) #the file writes the text received from the user on the textbox
 
         
- 
 
     def save_file():
         """Save the current file as a new file."""
