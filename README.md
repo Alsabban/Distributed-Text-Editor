@@ -21,7 +21,7 @@ Course Project for CSE354 Distributed Computing
 ![Start screen For Server](/Img/serverStart.png "Server Start Screen")
 
 ### Server After Pressing "Start" button
-![Server after start](/Img/serverStartButton.png "Server After Pressing 'Start'")
+![Server after start](/Img/severStartButton.png "Server After Pressing 'Start'")
 
 ### Client Start Screen
 ![Start screen For Clients](/Img/clientStart.png "Client Start Screen")
