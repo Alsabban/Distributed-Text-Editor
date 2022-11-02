@@ -71,6 +71,7 @@ def textApp(input_queue, output_queue):
         
     def connect():
         """Open a file for editing."""
+        txt_edit.delete("1.0", tk.END)
         txt_edit.config(state=tk.NORMAL) #Enables the textbox in the GUI
         s.connect(p3)
         s.send_string("MSG") #Sends to the server on thid socket "MSG" to request the file data on the server
